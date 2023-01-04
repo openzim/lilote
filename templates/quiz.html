@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block slug %}{{ slug }}{% endblock %}
+
+{% block content %}
+<div id="quiz" class="pure-g pure-u-1">
+  <div id="form" class="form">
+    <p id="error" class="error hidden"></p>
+    <h2 id="question_name" class="lilote-quiz-form-title__main"></h2>
+    <h3 id="question_text" class="question-text"></h3>
+    <ul id="answers">
+    </ul>
+  </div>
+  <div class="buttons">
+    <button id="validate-button" class="set-answer button" disabled="disabled">Je valide ma réponse</button>
+    <button id="skip-button" class="idontknow button">Je sais pas</button>
+    <button id="next-question-button" class="next-question button hidden">Question suivante</button>
+    <button id="view-score-button" class="view-score button hidden">Voir le résultat</button>
+  </div>
+  <div class="status">
+    <p>Question <em id="question-num">?</em> | Total points : <em id="nb-points">?</em></p>
+  </div>
+</div>
+
+<div id="scores" class="pure-g pure-u-1 hidden">
+  <div class="quiz-result__content form">
+    <h2 class="quiz-result__title animation-scale">Bravo !</h2>
+    <p class="quiz-result__subtitle">
+      <strong>Tu as terminé ton quiz et tu as&nbsp;:</strong>
+    </p>
+    <ul class="quiz-result__list">
+      <li class="quiz-result__item">
+        <div class="quiz-result__item-text">
+          <div class="quiz-result__caption">
+            <span class="quiz-result__number quiz-result__number--correct"><strong>?</strong></span>&nbsp;<strong>bonne(s) réponse(s)</strong>
+          </div>
+          <div class="quiz-result__line-wrapper">
+            <div class="quiz-result__line quiz-result__line--correct" style="width: calc(0%)"></div>
+          </div>
+        </div>
+      </li>
+      <li class="quiz-result__item">
+        <div class="quiz-result__item-text">
+          <div class="quiz-result__caption">
+            <span class="quiz-result__number quiz-result__number--wrong"><strong>?</strong></span>&nbsp;<strong>mauvaise(s) réponse(s)</strong>
+          </div>
+          <div class="quiz-result__line-wrapper">
+            <div class="quiz-result__line quiz-result__line--wrong" style="width: calc(0%)"></div>
+          </div>
+        </div>
+      </li>
+      <li class="quiz-result__item">
+        <div class="quiz-result__item-text">
+          <div class="quiz-result__caption">
+            <span class="quiz-result__number quiz-result__number--skip"><strong>?</strong></span>&nbsp;<strong>question(s) passée(s)</strong>
+          </div>
+          <div class="quiz-result__line-wrapper">
+            <div class="quiz-result__line quiz-result__line--skip" style="width: calc(0%)"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="quiz-result__total">
+      <div class="quiz-result__total-text">
+        <strong>Tu as donc gagné :</strong>
+      </div>
+      <div class="quiz-result__total-picture">
+        <svg class="quiz-result__total-icon" aria-hidden="true">
+          <use xlink:href="assets/sprite.svg#svg-icon-4"></use>
+        </svg>
+        <div class="quiz-result__total-circle">
+          <div class="quiz-result__total-score"><strong>?</strong></div>
+          <div class="quiz-result__total-points">
+            <strong>point(s)</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="assets/quiz.js"></script>
+{% endblock %}

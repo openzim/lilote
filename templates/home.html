@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+{% block slug %}Accueil{% endblock %}
+
+{% block content %}
+<div class="home">
+  <div class="pure-g pure-u-1">
+    <h1>Bienvenue</h1>
+    <label for="search-selection">Recherche une histoire via ses informations</label>
+    <select id="search-selection"></select>
+    <p id="error" class="error hidden"></p>
+  </div>
+</div>
+<script type="text/javascript" src="assets/home.js"></script>
+{% endblock %}
