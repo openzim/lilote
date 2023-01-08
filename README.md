@@ -2,6 +2,9 @@
 
 Generate a Lilote ZIM file from a Lilote export JSON
 
+[![CodeFactor](https://www.codefactor.io/repository/github/openzim/lilote/badge)](https://www.codefactor.io/repository/github/openzim/lilote)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Usage
 
 ```sh
@@ -23,7 +26,6 @@ Generate a Lilote ZIM file from a Lilote export JSON
    {
       "asbid": 10032,
       "title":"Some Title",
-      "pdf": "https://africanstorybook.org/read/downloadbook.php?id=40509&a=1&d=0&layout=landscape",
       "author_book":"An Author",
       "level":"4",
       "serie":"",
