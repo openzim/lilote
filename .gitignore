@@ -127,3 +127,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+*.zim
+*.json
+
+assets/lottie*.js
+assets/Varta.*
+assets/grids-responsive*.css
+assets/pure*.css
+assets/bootstrap.bundle.min.js
+assets/bootstrap.min.css
+assets/jquery-3.6.3.slim.min.js
+assets/select2-bootstrap-5-theme.min.css
+assets/select2.css
+assets/select2.full.min.js
+assets/select2.min.css
+assets/select2.fr.js

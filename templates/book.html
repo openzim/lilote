@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block slug %}{{ slug }}{% endblock %}
+
+{% block content %}
+<div id="summary">
+<div class="pure-g pure-u-1">
+  <h1>{{ title }}</h1>
+  <p>
+    <a href="{{ slug }}.quiz"><button class="next-question button">Faire le Quiz</button></a>
+    {% if pdf %}<a href="{{ slug }}.pdf"><button class="next-question button">Lire l'histoire</button></a>{% endif %}
+</div>
+
+<div class="pure-g metadata">
+  {% if cover %}<div class="pure-u-1 pure-u-sm-1-2">
+  {% else %}<div class="pure-u-1">
+  {% endif %}
+    <table>
+      <tr><th scope="row">Titre</th><td>{{ title }}</td></tr>
+      {% if author_book %}
+      <tr><th scope="row">Auteur</th><td>{{ author_book }}</td></tr>
+      {% endif %}
+      {% if book_editor %}
+      <tr><th scope="row">Éditions</th><td>{{ book_editor }}</td></tr>
+      {% endif %}
+      {% if collection %}
+      <tr><th scope="row">Collection</th><td>{{ collection }}</td></tr>
+      {% endif %}
+      {% if serie %}
+      <tr><th scope="row">Série</th><td>{{ serie }}</td></tr>
+      {% endif %}
+      {% if book_theme %}
+      <tr><th scope="row">Thème</th><td>{{ book_theme }}</td></tr>
+      {% endif %}
+      {% if level %}
+      <tr><th scope="row">Niveau</th><td>{{ level }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+  {% if cover %}
+  <div class="pure-u-1 pure-u-sm-1-2 cover-colum">
+    {% if pdf %}<a href="{{ slug }}.pdf">{% endif %}<img src="{{ slug }}.png" alt="Couverture du livre" />{% if pdf %}</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

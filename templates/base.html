@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}Accueil{% endblock %} – Lilote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Des quiz de lecture sur 300 livres jeunesse">
+  <link rel="stylesheet" type="text/css" href="assets/pure-min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/grids-responsive-min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/select2.min.css"  />
+  <link rel="stylesheet" type="text/css" href="assets/select2-bootstrap-5-theme.min.css"  />
+  <link rel="stylesheet" type="text/css" href="assets/lilote.css" />
+  <script src="assets/lottie.min.js"></script>
+  <script src="assets/jquery-3.6.3.slim.min.js"></script>
+  <script src="assets/bootstrap.bundle.min.js"></script>
+  <script src="assets/select2.full.min.js"></script>
+  <script src="assets/select2.fr.js"></script>
+  <script src="assets/BookQuiz.js"></script>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/logo-48x48@3x.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/logo-128x128@3x.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/logo-256x256@3x.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512x512@3x.png">
+  <link rel="apple-touch-icon" href="assets/logo-48x48@3x.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/logo-128x128@3x.png">
+  <link rel="apple-touch-icon" sizes="256x256" href="assets/logo-256x256@3x.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/logo-512x512@3x.png">
+</head>
+<body>
+  <header>
+    <a class="logo-link" href="Accueil" title="Accueil"><img src="assets/logo-head.png" alt="Logo Lilote" /></a>
+    <p><a href="{% block slug %}{% endblock %}">{{ self.title() }}</a></p>
+  </header>
+{% block content %}{% endblock %}
+</body>
+</html>
