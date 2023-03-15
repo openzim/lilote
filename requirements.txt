@@ -1,4 +1,4 @@
 # python3.11
-zimscraperlib==2.0.0
+zimscraperlib==2.1.0
 Jinja2==3.1.2
 python-slugify==7.0.0

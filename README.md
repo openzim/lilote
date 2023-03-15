@@ -23,31 +23,53 @@ Generate a Lilote ZIM file from a Lilote export JSON
 
 ```json
 [
-   {
-      "asbid": 10032,
-      "title":"Some Title",
-      "author_book":"An Author",
-      "level":"4",
-      "serie":"",
-      "collection":"",
-      "book_editor":"Editor",
-      "book_theme":"Aventure",
-      "accessibility":"",
+    {
+      "title":"Un d\u00e9saccord sur l'importance de divers emplois",
+      "ressources_kiwix_export":"Un_D\u00e9saccord_Sur_L\u2019Importance_De_Divers_Emplois",
+      "level":2,
+      "author_book":"Beatrice Inzikuru",
+      "book_editor":"African Storybook",
+      "collection":null,
+      "book_theme":"Sujet de soci\u00e9t\u00e9",
       "question_export":[
          {
-            "correct_answer":"Answer A",
-            "question":"What is the answer?",
+            "question":"A propos de quel sujet les villageois ne s'entendent-ils pas ? ",
+            "correct_answer":"De l'importance de leurs emplois",
             "wrong_answer":[
-               "Answer B",
-               "Answer C"
+               "De l'importance des r\u00e9coltes",
+               "De l'importance des \u00e9tudes"
             ]
          },
          {
-            "correct_answer":"Answer A",
-            "question":"What is the answer to this new one?",
+            "question":"Pourquoi le professeur pense que son m\u00e9tier est le plus important ?",
+            "correct_answer":"Sans lui personne ne peut apprendre",
             "wrong_answer":[
-               "Answer B",
-               "Answer C"
+               "Sans lui il n'y a pas de livres",
+               "Sans lui il n'y a pas d'enfants en classe"
+            ]
+         },
+         {
+            "question":"Le menuisier pense que son travail est le plus important. Pourquoi ?",
+            "correct_answer":"Sans lui personne ne peut construire des maisons et des \u00e9coles",
+            "wrong_answer":[
+               "Sans lui personne n'a de meubles",
+               "Sans lui il n'y a pas de jardins "
+            ]
+         },
+         {
+            "question":"Que d\u00e9clare l'\u00e9l\u00e8ve aux villageois ?",
+            "correct_answer":"Sans les \u00e9l\u00e8ves il n'y a aucun m\u00e9tier",
+            "wrong_answer":[
+               "Aucun m\u00e9tier n'est important",
+               "Personne n'est indispensable"
+            ]
+         },
+         {
+            "question":"Que font les villageois apr\u00e8s cette d\u00e9claration ? ",
+            "correct_answer":"Ils admettent que chacun doit d'abord \u00eatre un \u00e9l\u00e8ve",
+            "wrong_answer":[
+               "Ils partent en vacances",
+               "Ils se disputent"
             ]
          }
       ]
@@ -56,3 +78,4 @@ Generate a Lilote ZIM file from a Lilote export JSON
 
 ```
 
+Expects the PDF files to be in `medias/` folder

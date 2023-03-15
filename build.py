@@ -6,12 +6,12 @@ import html
 import json
 import logging
 import pathlib
+import re
 import sys
 from typing import Any, Dict, List, Tuple, Union
 
 import slugify
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from zimscraperlib.download import stream_file
 from zimscraperlib.logging import getLogger
 from zimscraperlib.zim.creator import Creator
 
@@ -107,7 +107,7 @@ class LiloteBuilder:
             description="Des quiz de lecture sur 300 livres jeunesse",
             creator="Lilote.fr",
             publisher="openZIM",
-            name="lilote_fr_test",
+            name=re.sub(r"_(\d{4}-\d{2})(.zim)", r"\2", self.dst_path.name),
             tags=";".join(["jeunesse", "lecture"]),
             date=datetime.date.today(),
         ).config_verbose(True)
@@ -142,14 +142,14 @@ class LiloteBuilder:
             logger.debug(f"> {path}")
             self.creator.add_item_for(path=path, fpath=fpath)
 
-    def add_pdf_for(self, slug: str, asbid: int) -> Tuple[bool, bool]:
+    def add_pdf_for(self, slug: str, src_fname: str) -> Tuple[bool, bool]:
         """download or retrieve PDF and add to ZIM"""
         cache = root_dir.joinpath("medias")
         cache.mkdir(exist_ok=True, parents=True)
 
-        pdf_path = cache.joinpath(f"{asbid}.pdf")
+        pdf_path = cache.joinpath(f"{src_fname}.pdf")
         if not pdf_path.exists():
-            stream_file(url=get_pdf_url(asbid), fpath=pdf_path)
+            raise IOError(f"Unable to find {pdf_path}")
 
         self.creator.add_item_for(
             path=f"{slug}.pdf",
@@ -161,14 +161,14 @@ class LiloteBuilder:
             duplicate_ok=True,
         )
 
-    def add_cover_for(self, slug: str, asbid: int) -> Tuple[bool, bool]:
+    def add_cover_for(self, slug: str, src_fname: str) -> Tuple[bool, bool]:
         """download or retrieve cover and add to ZIM"""
         cache = root_dir.joinpath("medias")
         cache.mkdir(exist_ok=True, parents=True)
 
-        cover_path = cache.joinpath(f"{asbid}.png")
+        cover_path = cache.joinpath(f"{src_fname}.png")
         if not cover_path.exists():
-            stream_file(url=get_cover_url(asbid), fpath=cover_path)
+            raise IOError(f"Unable to find {cover_path}")
 
         self.creator.add_item_for(
             path=f"{slug}.png",
@@ -184,24 +184,24 @@ class LiloteBuilder:
         for book in self.books:
             logger.debug(f"Adding {book['slug']}")
 
-            if book.get("asbid"):
-                try:
-                    self.add_pdf_for(book["slug"], book["asbid"])
-                except Exception as exc:
-                    logger.error("Failed to include PDF: {exc}")
-                    logger.exception(exc)
-                    book["pdf"] = False
-                else:
-                    book["pdf"] = True
+            try:
+                self.add_pdf_for(book["slug"], book["ressources_kiwix_export"])
+            except Exception as exc:
+                logger.error(f"Failed to include PDF: {exc}")
+                logger.exception(exc)
+                book["pdf"] = False
+            else:
+                book["pdf"] = True
 
-                try:
-                    self.add_cover_for(book["slug"], book["asbid"])
-                except Exception as exc:
-                    logger.error("Failed to include cover: {exc}")
-                    logger.exception(exc)
-                    book["cover"] = False
-                else:
-                    book["cover"] = True
+            book["cover"] = False
+            # try:
+            #     self.add_cover_for(book["slug"], book["ressources_kiwix_export"])
+            # except Exception as exc:
+            #     logger.error(f"Failed to include cover: {exc}")
+            #     logger.exception(exc)
+            #     book["cover"] = False
+            # else:
+            #     book["cover"] = True
 
             self.creator.add_item_for(
                 path=f"{book['slug']}.json",
